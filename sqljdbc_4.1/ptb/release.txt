@@ -1,0 +1,95 @@
+Informações sobre a versão
+Microsoft JDBC Driver 4.1 para SQL Server
+Novembro de 2014
+
+
+INTRODUÇÃO
+------------
+Esse arquivo contém as últimas novidades e outras informações importantes
+que complementam a documentação do Microsoft JDBC Driver 4.1 para SQL Server
+. Você deve ler este arquivo completamente antes de 
+instalar o JDBC driver.
+
+Seus comentários são muito importante para nós e nos esforçaremos
+para respondê-los no momento oportuno. Para obter informações
+sobre como fornecer comentários usando os blogs do JDBC driver e fóruns online,
+consulte a página do Microsoft JDBC Driver 4.1 para SQL Server em
+http://msdn.microsoft.com/data/jdbc.
+
+
+INSTALAÇÃO
+------------
+As instruções sobre a instalação do JDBC driver estão localizadas no arquivo install.txt.
+Consulte esse arquivo para obter informações sobre como instalar o driver JDBC
+nos sistemas operacionais Windows e Unix.
+
+SISTEMAS OPERACIONAIS COM SUPORTE
+---------------------------
+O Microsoft JDBC Driver 4.1 para SQL Server oferece suporte aos seguintes tipos de sistemas operacionais: 
+Linux, Unix, Windows Server 2008,
+Windows Vista Service Pack 1, Windows Server 2008 R2, Windows 7, Windows 8 e Windows 8.1.
+
+A lista acima é um exemplo de alguns sistemas operacionais com suporte.
+O JDBC driver foi projetado para funcionar em qualquer sistema operacional com suporte
+ao uso de uma máquina Virtual Java (JVM). No entanto, apenas Sun Solaris, SUSE
+Linux e Windows Vista Service Pack 1 ou sistemas operacionais posteriores foram testados.
+
+CONTEÚDO DA VERSÃO
+----------------
+O arquivo zip ou tar executável do Microsoft JDBC Driver 4.1 para SQL Server
+descompacta os seguintes arquivos em locais específicos, relativos
+ao diretório de instalação selecionado:
+
+<installation directory>\sqljdbc_<version>\<language>\install.txt
+<installation directory>\sqljdbc_<version>\<language>\release.txt
+<installation directory>\sqljdbc_<version>\<language>\license.txt
+<installation directory>\sqljdbc_<version>\<language>\sqljdbc.jar
+<installation directory>\sqljdbc_<version>\<language>\sqljdbc4.jar
+<installation directory>\sqljdbc_<version>\<language>\sqljdbc41.jar
+<installation directory>\sqljdbc_<version>\<language>\auth\x86\sqljdbc_auth.dll
+<installation directory>\sqljdbc_<version>\<language>\auth\x64\sqljdbc_auth.dll
+<installation directory>\sqljdbc_<version>\<language>\xa\xa_install.sql
+<installation directory>\sqljdbc_<version>\<language>\xa\x86\sqljdbc_xa.dll
+<installation directory>\sqljdbc_<version>\<language>\xa\x64\sqljdbc_xa.dll
+
+
+LISTA DE ALTERAÇÕES
+-----------
+Alterações da versão 4.0 para a 4.1:
+
+2828290 O novo nome do servidor agora é enviado no pacote Login7 depois que uma solicitação é redirecionada
+
+3362720 o JDBC driver agora oferece suporte ao JDK (Java Development Kit) versão 7.0, além de JDK 5.0 e 6.0. Ele inclui um novo arquivo jar, sqljdbc41.jar, que dá suporte ao JDK 7.0 e é compatível com a API do JDBC 4.0. 
+
+PROBLEMAS CONHECIDOS
+------------
+O Microsoft JDBC Driver 4.1 para SQL Server apresenta os seguintes problemas conhecidos:
+
+1) LIMITAÇÕES DE METADADOS DE PARÂMETROS COM A INSTRUÇÃO SQL MERGE
+
+PreparedStatement.getParameterMetadata() lança uma SQLException quando usado
+com uma consulta parametrizada de mesclagem.
+
+
+2) JavaKerberos e IBM VMs
+
+Se estiver executando em ambientes Windows, você talvez tenha que especificar principalname no arquivo de configuração para fazer com que o Java Kerberos funcione. Por exemplo: 
+SQLJDBCDriver {
+com.ibm.security.auth.module.Krb5LoginModule required useDefaultCcache=true credsType=initiator principal=principalname@principaldomain;
+};
+
+
+3) REMOÇÃO DE CONEXÕES COM SQL AZURE
+
+Ao conectar ao SQL Azure, conexões ociosas podem ser finalizadas por um componente de rede (como um firewall) depois de um 
+período de inatividade. Para evitar o descarte de conexões ociosas por um componente de rede, as seguintes 
+configurações de registro (ou seus equivalentes não Windows) devem ser definidas no sistema operacional em que o driver é carregado:
+           
+           Configuração do Registro                                                                     Valor recomendado
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime                 30000      
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval             1000
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\TcpMaxDataRetransmission      10
+  
+
+
+

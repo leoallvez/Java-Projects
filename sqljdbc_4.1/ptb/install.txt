@@ -1,0 +1,39 @@
+Instruções de instalação
+Microsoft JDBC Driver 4.1 para SQL Server
+
+
+INTRODUÇÃO
+------------
+Estas são as instruções para descompactar o sqljdbc_<version>_enu.exe e o 
+sqljdbc_<version>_enu.tar.gz.
+
+
+WINDOWS
+-------
+1. Leia o arquivo license.txt. O download e o uso do Microsoft JDBC Driver 4.1 para SQL Server correspondem à aceitação dessa licença.
+
+2. Baixe o sqljdbc_<version>_enu.exe em um diretório temporário.
+
+3. Execute sqljdbc_<version>_enu.exe
+
+4. Insira um diretório de instalação quando for solicitado; é recomendável que você descompacte
+   este arquivo zip em %ProgramFiles% com o diretório padrão:
+
+	Microsoft JDBC DRIVER 4.1 para SQL Server
+
+
+UNIX
+----
+1. Leia o arquivo license.txt. O download e o uso do Microsoft JDBC Driver 4.1 para SQL Server correspondem à aceitação dessa licença.
+
+2. Baixe o sqljdbc_<version>_enu.tar.gz em um diretório temporário.
+
+3. Para descompactar o tar compactado, navegue até o diretório onde você deseja o
+   driver descompactado e digite:
+
+	gzip -d sqljdbc_<version>_enu.tar.gz
+
+4. Para desempacotar o arquivo tar, mova-o para o diretório onde você deseja que o driver 
+   seja instalado e digite:
+
+	tar -xf sqljdbc_<version>_enu.tar
